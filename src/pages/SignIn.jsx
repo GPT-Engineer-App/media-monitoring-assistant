@@ -35,6 +35,7 @@ const SignIn = () => {
 
       const result = await response.json();
       const isPasswordValid = await bcrypt.compare(data.password, result.hashedPassword);
+      console.log("Password comparison result:", isPasswordValid);
 
       if (!isPasswordValid) {
         throw new Error("Invalid credentials");
@@ -52,6 +53,7 @@ const SignIn = () => {
       } else {
         toast.error("Sign in failed", { description: error.message });
       }
+      console.error("Detailed error information:", error);
     } finally {
       setLoading(false);
     }

@@ -2,30 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { Badge } from "@/components/ui/badge";
 
 const fetchMentions = async () => {
-  // Replace with actual API call
-  return [
-    {
-      id: 1,
-      source: "Twitter",
-      date: "2023-10-01",
-      content: "Great product!",
-      sentiment: "positive",
-    },
-    {
-      id: 2,
-      source: "Facebook",
-      date: "2023-10-02",
-      content: "Not satisfied with the service.",
-      sentiment: "negative",
-    },
-    {
-      id: 3,
-      source: "Instagram",
-      date: "2023-10-03",
-      content: "It's okay, could be better.",
-      sentiment: "neutral",
-    },
-  ];
+  const response = await fetch("/api/mentions");
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  return response.json();
 };
 
 const Mentions = () => {

@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
+    return res.status(405).json({ message: "Method Not Allowed" });
   }
 
   try {
@@ -16,6 +16,7 @@ export default async function handler(req, res) {
 
     res.status(200).json({ hashedPassword: user.password });
   } catch (error) {
+    console.error("Sign-in error:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 }

@@ -27,6 +27,7 @@ const SignIn = () => {
         try {
           errorData = await response.json();
         } catch (e) {
+          console.error("Error parsing response:", e);
           throw new Error("Invalid response from server");
         }
         throw new Error(errorData.message || "Failed to sign in");
@@ -41,6 +42,7 @@ const SignIn = () => {
 
       toast("Sign in successful!", { description: "Welcome back!" });
     } catch (error) {
+      console.error("Sign-in error:", error);
       if (error instanceof SyntaxError) {
         toast.error("Sign in failed", { description: "Invalid response from server" });
       } else if (error.message === "Invalid credentials") {

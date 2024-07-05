@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Line } from "react-chartjs-2";
 import { useQuery } from "@tanstack/react-query";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 const fetchDashboardData = async () => {
   const response = await fetch("/api/dashboard");
@@ -11,6 +13,13 @@ const fetchDashboardData = async () => {
 };
 
 const Dashboard = () => {
+  const [keyword, setKeyword] = useState("");
+
+  const handleSearch = (event) => {
+    setKeyword(event.target.value);
+    // Implement the logic to handle the search here
+    console.log("Searching for keyword:", keyword);
+  };
   const { data, error, isLoading } = useQuery({
     queryKey: ["dashboardData"],
     queryFn: fetchDashboardData,
@@ -22,6 +31,15 @@ const Dashboard = () => {
   return (
     <div>
       <h1 className="text-3xl mb-4">Dashboard</h1>
+      <div className="mb-4">
+        <Input
+          type="text"
+          placeholder="Search for keywords..."
+          value={keyword}
+          onChange={handleSearch}
+          className="w-full"
+        />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <Card>
           <CardHeader>

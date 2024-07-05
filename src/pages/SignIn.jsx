@@ -23,7 +23,12 @@ const SignIn = () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch (e) {
+          throw new Error("Invalid response from server");
+        }
         throw new Error(errorData.message || "Failed to sign in");
       }
 
@@ -36,7 +41,11 @@ const SignIn = () => {
 
       toast("Sign in successful!", { description: "Welcome back!" });
     } catch (error) {
-      toast.error("Sign in failed", { description: error.message });
+      if (error instanceof SyntaxError) {
+        toast.error("Sign in failed", { description: "Invalid response from server" });
+      } else {
+        toast.error("Sign in failed", { description: error.message });
+      }
     } finally {
       setLoading(false);
     }

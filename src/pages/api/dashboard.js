@@ -5,6 +5,8 @@ export default async function handler(req, res) {
     positiveMentions: 80,
     negativeMentions: 20,
     neutralMentions: 20,
+    reach: 5000,
+    engagement: 300,
     sentimentOverTime: {
       labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
       datasets: [

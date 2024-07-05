@@ -55,6 +55,22 @@ const Dashboard = () => {
             <p className="text-2xl">{data.neutralMentions}</p>
           </CardContent>
         </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Reach</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl">{data.reach}</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Engagement</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl">{data.engagement}</p>
+          </CardContent>
+        </Card>
       </div>
       <div className="bg-white p-4 rounded-lg shadow-md">
         <Line data={data.sentimentOverTime} />

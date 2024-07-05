@@ -43,6 +43,10 @@ const SignIn = () => {
     } catch (error) {
       if (error instanceof SyntaxError) {
         toast.error("Sign in failed", { description: "Invalid response from server" });
+      } else if (error.message === "Invalid credentials") {
+        toast.error("Sign in failed", { description: "Invalid email or password" });
+      } else if (error.message === "Failed to sign in") {
+        toast.error("Sign in failed", { description: "Server error, please try again later" });
       } else {
         toast.error("Sign in failed", { description: error.message });
       }

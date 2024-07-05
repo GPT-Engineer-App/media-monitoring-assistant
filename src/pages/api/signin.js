@@ -14,10 +14,8 @@ export default async function handler(req, res) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    res.setHeader('Content-Type', 'application/json');
     res.status(200).json({ hashedPassword: user.password });
   } catch (error) {
-    res.setHeader('Content-Type', 'application/json');
     res.status(500).json({ message: "Internal Server Error" });
   }
 }

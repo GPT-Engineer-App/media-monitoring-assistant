@@ -23,7 +23,8 @@ const SignIn = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to sign in");
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to sign in");
       }
 
       const result = await response.json();

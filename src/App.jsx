@@ -9,8 +9,6 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Mentions from "./pages/Mentions.jsx";
 import SentimentAnalysis from "./pages/SentimentAnalysis.jsx";
 import SettingsPage from "./pages/Settings.jsx";
-import SignUp from "./pages/SignUp.jsx";
-import SignIn from "./pages/SignIn.jsx";
 
 const queryClient = new QueryClient();
 
@@ -50,8 +48,6 @@ const App = () => {
               <Route path="mentions" element={<Mentions />} />
               <Route path="sentiment-analysis" element={<SentimentAnalysis />} />
               <Route path="settings" element={<SettingsPage />} />
-              <Route path="signup" element={<SignUp />} />
-              <Route path="signin" element={<SignIn />} />
             </Route>
           </Routes>
         </Router>
